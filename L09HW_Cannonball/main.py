@@ -17,7 +17,7 @@ class Cannonball:
         self._y = 0
         self._vx = 0
         self._vy = 0
-        self.printer = Print_Iface(win, x, y)
+        
 
     ## Move the cannon ball, using its current velocities.
     #  @param sec the amount of time that has elapsed.
@@ -50,15 +50,17 @@ class Cannonball:
     def shoot(self, angle, velocity, user_grav, step=0.1):
         self._vx = velocity * cos(angle)
         self._vy = velocity * sin(angle)
-        self.move(step, user_grav)
+        #self.move(step, user_grav)
 
         xs = []
         ys = []
-
-        while self.getY() > 1e-14:
+        #moving as long as th eball is above ground
+        while self.getY() >= 0:
             xs.append(self.getX())
             ys.append(self.getY())
             self.move(step, user_grav)
+            if len(xs)> 1000:
+                break
 
         return xs, ys
 
@@ -93,15 +95,15 @@ def run_app():
             alt.Chart(df)
             .mark_line()
             .encode(
-                x=alt.X("x:Q", scale=alt.Scale(domain=[0, 200]), title="Distance (m)"),
-                y=alt.Y("y:Q", scale=alt.Scale(domain=[0, 100]), title="Height (m)")
+                x=alt.X("x:Q", title="Distance (m)"),
+                y=alt.Y("y:Q", title="Height (m)")
             )
             .properties(width=700, height=400)
         )
         st.altair_chart(chart, use_container_width=True)
 
 class Print_Iface:
-    def __init__(self, win, x, y):
+    def __init__(self, x, y):
         # This class now "owns" the visual representation
         self.circle = Circle(Point(x, y), 3)
         self.circle.setFill("red")
@@ -113,6 +115,19 @@ class Print_Iface:
         dx = x - center.getX()
         dy = y - center.getY()
         self.circle.move(dx, dy)
+import random
+
+class Crazyball(Cannonball):
+    def move(self, dt):
+        # Call the parent move logic first to handle standard physics
+        super().move(dt)
+        
+        # Add the "Crazy" requirement: randomize position if x < 400
+        if self.getX() < 400:
+            rand_q = random.randrange(-5, 5) # Small random jitter
+            # Manually nudge the coordinates
+            self.x = self.x + rand_q
+            self.y = self.y + rand_q
 
 if __name__ == "__main__":
     run_app()
