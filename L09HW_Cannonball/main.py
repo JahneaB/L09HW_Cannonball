@@ -6,6 +6,20 @@ import streamlit as st
 import random
 
 
+
+class Print_Iface:
+    def __init__(self, x, y):
+        # This class now "owns" the visual representation
+        self.circle = Circle(Point(x, y), 3)
+        self.circle.setFill("red")
+        self.circle.draw(win)
+
+    def update_position(self, x, y):
+        # Logic to move the visual circle to the new coordinates
+        center = self.circle.getCenter()
+        dx = x - center.getX()
+        dy = y - center.getY()
+        self.circle.move(dx, dy)
 ## Represent a cannonball, tracking its position and velocity.
 #
 class Cannonball:
@@ -17,6 +31,7 @@ class Cannonball:
         self._y = 0
         self._vx = 0
         self._vy = 0
+        #self.printer = Print_Iface()
         
 
     ## Move the cannon ball, using its current velocities.
@@ -63,6 +78,17 @@ class Cannonball:
                 break
 
         return xs, ys
+class Crazyball(Cannonball):
+    def move(self, sec, grav):
+        # Call the parent move logic first to handle standard physics
+        super().move(sec,grav)
+        
+        # Add the "Crazy" requirement: randomize position if x < 400
+        if self.getX() < 400:
+            rand_q = random.randrange(0,10) # Small random jitter
+            # Manually nudge the coordinates
+            self._x += rand_q
+            self._y += rand_q
 
 def run_app():
     st.title("Cannonball Trajectory")
@@ -74,6 +100,7 @@ def run_app():
 
     gravity_options = {"Earth": 9.81, "Moon": 1.62}
     gravity_name = st.selectbox("Gravity", options=list(gravity_options.keys()), index=0)
+    is_crazy = st.checkbox("Enable Crazyball Mode")
     gravity = gravity_options[gravity_name]
     step = .1
 
@@ -82,7 +109,10 @@ def run_app():
 
     if simulate:
         angle_rad = radians(angle_deg)
-        ball = Cannonball(0)
+        if is_crazy:
+            ball = Crazyball(0)
+        else:
+            ball = Cannonball(0)        
         xs, ys = ball.shoot(angle_rad, velocity, gravity, step)
 
         if not xs:
@@ -102,32 +132,7 @@ def run_app():
         )
         st.altair_chart(chart, use_container_width=True)
 
-class Print_Iface:
-    def __init__(self, x, y):
-        # This class now "owns" the visual representation
-        self.circle = Circle(Point(x, y), 3)
-        self.circle.setFill("red")
-        self.circle.draw(win)
 
-    def update_position(self, x, y):
-        # Logic to move the visual circle to the new coordinates
-        center = self.circle.getCenter()
-        dx = x - center.getX()
-        dy = y - center.getY()
-        self.circle.move(dx, dy)
-import random
-
-class Crazyball(Cannonball):
-    def move(self, dt):
-        # Call the parent move logic first to handle standard physics
-        super().move(dt)
-        
-        # Add the "Crazy" requirement: randomize position if x < 400
-        if self.getX() < 400:
-            rand_q = random.randrange(-5, 5) # Small random jitter
-            # Manually nudge the coordinates
-            self.x = self.x + rand_q
-            self.y = self.y + rand_q
 
 if __name__ == "__main__":
     run_app()
