@@ -17,6 +17,7 @@ class Cannonball:
         self._y = 0
         self._vx = 0
         self._vy = 0
+        self.printer = Print_Iface(win, x, y)
 
     ## Move the cannon ball, using its current velocities.
     #  @param sec the amount of time that has elapsed.
@@ -69,7 +70,7 @@ def run_app():
     )
     velocity = st.selectbox("Initial velocity", options=[15, 25, 40], index=1)
 
-    gravity_options = {"Earth": 9.81}
+    gravity_options = {"Earth": 9.81, "Moon": 1.62}
     gravity_name = st.selectbox("Gravity", options=list(gravity_options.keys()), index=0)
     gravity = gravity_options[gravity_name]
     step = .1
@@ -99,6 +100,19 @@ def run_app():
         )
         st.altair_chart(chart, use_container_width=True)
 
+class Print_Iface:
+    def __init__(self, win, x, y):
+        # This class now "owns" the visual representation
+        self.circle = Circle(Point(x, y), 3)
+        self.circle.setFill("red")
+        self.circle.draw(win)
+
+    def update_position(self, x, y):
+        # Logic to move the visual circle to the new coordinates
+        center = self.circle.getCenter()
+        dx = x - center.getX()
+        dy = y - center.getY()
+        self.circle.move(dx, dy)
 
 if __name__ == "__main__":
     run_app()
