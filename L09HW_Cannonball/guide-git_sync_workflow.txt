@@ -1,0 +1,389 @@
+# ============================================================================
+# Step 1: Create and switch to a new branch for homework
+# ============================================================================
+git checkout -b homework/Cannonball
+# Comment: -b creates a NEW branch called "homework/Cannonball" (only use -b once)
+#          Automatically switches you to this new branch
+#          You're now working in an isolated branch (won't affect main)
+
+# ============================================================================
+# Step 2: Clone the homework repository into current directory
+# ============================================================================
+git clone https://github.com/fpunavarro/L09HW_Cannonball.git
+# Comment: Downloads the homework starter code from GitHub
+#          Creates a folder called "L09HW_Cannonball" in current directory
+#          This folder has its own .git directory (we'll remove it next)
+
+# ============================================================================
+# Step 3: Remove the .git directory from cloned repository
+# ============================================================================
+rm -rf L09HW_Cannonball/.git
+# Comment: -r = recursive (deletes folder and all contents)
+#          -f = force (no confirmation prompt)
+#          Removes git history from the cloned code
+#          Now it's just regular files, not a separate git repository
+#          This prevents "git repository inside git repository" conflicts
+
+# ============================================================================
+# Step 4: Stage all new files in your repository
+# ============================================================================
+git add .
+# Comment: . = current directory and everything below it
+#          Stages the L09HW_Cannonball folder and all its contents
+#          Files are now ready to be committed to YOUR repository
+
+# ============================================================================
+# Step 5: Commit the homework starter code
+# ============================================================================
+git commit -m "created new branch Cannonball"
+# Comment: -m = message (inline commit message)
+#          Creates a commit with all the staged files
+#          Saves this snapshot in your repository's history
+
+# ============================================================================
+# Step 6: Push the new branch to GitHub
+# ============================================================================
+git push -u origin homework/Cannonball
+# Comment: -u = set upstream (links local branch to remote branch)
+#          origin = your GitHub repository
+#          homework/Cannonball = the branch name on GitHub
+#          After this, future pushes just need "git push"
+
+# ============================================================================
+# Step 7: Navigate into the homework directory
+# ============================================================================
+cd L09HW_Cannonball
+# Comment: Changes your working directory into the homework folder
+#          All following commands will run inside this folder
+#          You're now in: /workspaces/cop2080-main-private/L09HW_Cannonball
+
+python3 -m venv .venv
+Answer no to prompt for setting to workspace folder
+ls -a # to confirm .venv exists
+source .venv/bin/activate
+(.venv) should be at beginning of line
+which python
+/workspaces/experiment_snippets/L09HW_Cannonball/.venv/bin/python  # output should be local venv
+
+# ============================================================================
+# Step 8: Install uv (Python package manager)
+# ============================================================================
+pip3 install uv
+# Comment: pip3 = Python package installer
+#          uv = modern, fast Python package manager (alternative to pip)
+#          Installs uv globally so you can use it in this project
+
+# ============================================================================
+# Step 9: Synchronize project dependencies with existing toml file
+# ============================================================================
+uv sync
+# Comment: Syncs project dependencies to pyproject.toml (Python project configuration file)
+#          Must have an existing pyroject.toml file
+#          Different than uv init which for setting up a new project
+I notice you mentioned new instructions were added between steps 7 and 8, but the document you shared doesn't appear to include them — the content jumps from step 7 directly to step 8 (which was originally step 8). Could you share the new instructions you'd like inserted there? I'll renumber everything accordingly.
+
+
+# ============================================================================ # Step 1: Create and switch to a new branch for homework # ============================================================================ git checkout -b homework/Cannonball # Comment: -b creates a NEW branch called "homewo
+
+pasted
+
+
+# ============================================================================ # Step 1: Create and switch to a new branch for homework # ============================================================================ git checkout -b homework/Cannonball # Comment: -b creates a NEW branch called "homewo
+
+pasted
+
+renumber the instructions. match formatting. Start with this file:    then add these steps between step 7 and 8:
+
+5:31 PM
+It looks like the new steps to insert between 7 and 8 didn't come through — your message appears to have been cut off after "add these steps between step 7 and 8:". Could you paste the new steps you'd like inserted?
+
+python3 -m venv .venv
+Answer no to prompt for setting to workspace folder
+ls -a # to confirm .venv exists
+source .venv/bin/activate
+(.venv) should be at beginning of line
+which python
+/workspaces/experiment_snippets/L09HW_Cannonball/.venv/bin/python  # output should be local venv
+
+5:31 PM
+Here is the full renumbered document with the new steps inserted between Step 7 and the former Step 8 (now Step 9):
+
+# ============================================================================
+# Step 1: Create and switch to a new branch for homework
+# ============================================================================
+git checkout -b homework/Cannonball
+# Comment: -b creates a NEW branch called "homework/Cannonball" (only use -b once)
+#          Automatically switches you to this new branch
+#          You're now working in an isolated branch (won't affect main)
+
+# ============================================================================
+# Step 2: Clone the homework repository into current directory
+# ============================================================================
+git clone https://github.com/fpunavarro/L09HW_Cannonball.git
+# Comment: Downloads the homework starter code from GitHub
+#          Creates a folder called "L09HW_Cannonball" in current directory
+#          This folder has its own .git directory (we'll remove it next)
+
+# ============================================================================
+# Step 3: Remove the .git directory from cloned repository
+# ============================================================================
+rm -rf L09HW_Cannonball/.git
+# Comment: -r = recursive (deletes folder and all contents)
+#          -f = force (no confirmation prompt)
+#          Removes git history from the cloned code
+#          Now it's just regular files, not a separate git repository
+#          This prevents "git repository inside git repository" conflicts
+
+# ============================================================================
+# Step 4: Stage all new files in your repository
+# ============================================================================
+git add .
+# Comment: . = current directory and everything below it
+#          Stages the L09HW_Cannonball folder and all its contents
+#          Files are now ready to be committed to YOUR repository
+
+# ============================================================================
+# Step 5: Commit the homework starter code
+# ============================================================================
+git commit -m "created new branch Cannonball"
+# Comment: -m = message (inline commit message)
+#          Creates a commit with all the staged files
+#          Saves this snapshot in your repository's history
+
+# ============================================================================
+# Step 6: Push the new branch to GitHub
+# ============================================================================
+git push -u origin homework/Cannonball
+# Comment: -u = set upstream (links local branch to remote branch)
+#          origin = your GitHub repository
+#          homework/Cannonball = the branch name on GitHub
+#          After this, future pushes just need "git push"
+
+# ============================================================================
+# Step 7: Navigate into the homework directory
+# ============================================================================
+cd L09HW_Cannonball
+# Comment: Changes your working directory into the homework folder
+#          All following commands will run inside this folder
+#          You're now in: /workspaces/cop2080-main-private/L09HW_Cannonball
+
+# ============================================================================
+# Step 8: Create and activate virtual environment
+# ============================================================================
+python3 -m venv .venv
+Answer no to prompt for setting to workspace folder
+ls -a # to confirm .venv exists
+source .venv/bin/activate
+(.venv) should be at beginning of line
+which python
+/workspaces/experiment_snippets/L09HW_Cannonball/.venv/bin/python  # output should be local venv
+
+# ============================================================================
+# Step 9: Install uv (Python package manager)
+# ============================================================================
+pip3 install uv
+# Comment: pip3 = Python package installer
+#          uv = modern, fast Python package manager (alternative to pip)
+#          Installs uv globally so you can use it in this project
+
+# ============================================================================
+# Step 10: Synchronize project dependencies with existing toml file
+# ============================================================================
+uv sync
+# Comment: Syncs project dependencies to pyproject.toml (Python project configuration file)
+#          Must have an existing pyroject.toml file
+#          Different than uv init which for setting up a new project
+
+# ============================================================================
+# Step 11: Check git status
+# ============================================================================
+git status
+# Comment: Shows which files are modified/untracked
+#          You should see: pyproject.toml, uv.lock, and other new files
+#          These files need to be committed
+
+# ============================================================================
+# Step 12: Stage all new/modified files
+# ============================================================================
+git add .
+# Comment: . = current directory (L09HW_Cannonball folder)
+#          Stages pyproject.toml, lock files, and any other new files
+#          Prepares them for commit
+
+# ============================================================================
+# Step 13: List all tracked files
+# ============================================================================
+git ls-files
+# Comment: Shows all files currently tracked by git in this directory
+#          Useful for verifying what's been added to version control
+#          Confirms your files are properly staged
+
+# ============================================================================
+# Step 14: Commit the dependency changes
+# ============================================================================
+git commit -am "created dependencies and uv sync"
+# Comment: -a = automatically stage all MODIFIED tracked files
+#          -m = commit message
+#          NOTE: This works because files were already added with "git add ."
+#          Saves the dependency configuration to your repository
+
+# ============================================================================
+# Step 15: Verify remote repository connection
+# ============================================================================
+git remote -v
+# Comment: -v = verbose (shows URLs)
+#          Displays the remote repositories (usually "origin")
+#          Confirms you're connected to the correct GitHub repo
+#          Should show: origin https://github.com/fpunavarro/cop2080-main-private
+
+# ============================================================================
+# Step 16: Push changes to GitHub
+# ============================================================================
+git push origin homework/Cannonball
+# Comment: Uploads your commits to GitHub
+#          origin = your GitHub repository
+#          homework/Cannonball = the branch to push to
+#          No -u needed since we already set upstream in Step 6
+#          Your homework with dependencies is now on GitHub!
+
+# ============================================================================
+# Step 17: Switch back to main branch
+# ============================================================================
+git checkout main
+# Comment: Returns to main branch of repository
+#          origin = your GitHub repository
+#          homework/Cannonball = the branch to push to
+#          No -u needed since we already set upstream in Step 6
+
+# ============================================================================
+# Step 18: Create and switch to a new branch for homework
+# ============================================================================
+git checkout homework/Cannonball
+# Comment: Returns to the homework branch
+#          Automatically switches you to the homework branch
+#          You're now working in an isolated branch (won't affect main)
+Replace step 8 with individual steps for each command
+
+5:32 PM
+# ============================================================================
+# Step 8: Create the virtual environment
+# ============================================================================
+python3 -m venv .venv
+# Comment: Creates a new virtual environment in a folder called .venv
+#          Isolates project dependencies from the global Python installation
+#          Answer no to prompt for setting to workspace folder
+
+# ============================================================================
+# Step 9: Confirm virtual environment was created
+# ============================================================================
+ls -a
+# Comment: -a = show all files including hidden ones
+#          Confirms .venv folder exists in current directory
+#          You should see .venv listed in the output
+
+# ============================================================================
+# Step 10: Activate the virtual environment
+# ============================================================================
+source .venv/bin/activate
+# Comment: Activates the virtual environment
+#          (.venv) should now appear at the beginning of your terminal line
+#          All python and pip commands will now use the local venv
+
+# ============================================================================
+# Step 11: Verify the virtual environment is active
+# ============================================================================
+which python
+# Comment: Displays the path to the active Python interpreter
+#          Output should be: /workspaces/homework/L09HW_Cannonball/.venv/bin/python
+#          Confirms you are using the local venv, not the global Python
+
+# ============================================================================
+# Step 12: Install uv (Python package manager)
+# ============================================================================
+pip3 install uv
+# Comment: pip3 = Python package installer
+#          uv = modern, fast Python package manager (alternative to pip)
+#          Installs uv globally so you can use it in this project
+
+# ============================================================================
+# Step 13: Synchronize project dependencies with existing toml file
+# ============================================================================
+uv sync
+# Comment: Syncs project dependencies to pyproject.toml (Python project configuration file)
+#          Must have an existing pyroject.toml file
+#          Different than uv init which for setting up a new project
+
+# ============================================================================
+# Step 14: Check git status
+# ============================================================================
+git status
+# Comment: Shows which files are modified/untracked
+#          You should see: pyproject.toml, uv.lock, and other new files
+#          These files need to be committed
+
+# ============================================================================
+# Step 15: Stage all new/modified files
+# ============================================================================
+git add .
+# Comment: . = current directory (L09HW_Cannonball folder)
+#          Stages pyproject.toml, lock files, and any other new files
+#          Prepares them for commit
+
+# ============================================================================
+# Step 16: List all tracked files
+# ============================================================================
+git ls-files
+# Comment: Shows all files currently tracked by git in this directory
+#          Useful for verifying what's been added to version control
+#          Confirms your files are properly staged
+
+# ============================================================================
+# Step 17: Commit the dependency changes
+# ============================================================================
+git commit -am "created dependencies and uv sync"
+# Comment: -a = automatically stage all MODIFIED tracked files
+#          -m = commit message
+#          NOTE: This works because files were already added with "git add ."
+#          Saves the dependency configuration to your repository
+
+# ============================================================================
+# Step 18: Verify remote repository connection
+# ============================================================================
+git remote -v
+# Comment: -v = verbose (shows URLs)
+#          Displays the remote repositories (usually "origin")
+#          Confirms you're connected to the correct GitHub repo
+#          Should show: origin https://github.com/fpunavarro/cop2080-main-private
+
+# ============================================================================
+# Step 19: Push changes to GitHub
+# ============================================================================
+git push origin homework/Cannonball
+# Comment: Uploads your commits to GitHub
+#          origin = your GitHub repository
+#          homework/Cannonball = the branch to push to
+#          No -u needed since we already set upstream in Step 6
+#          Your homework with dependencies is now on GitHub!
+
+# ============================================================================
+# Step 20: Switch back to main branch
+# ============================================================================
+git checkout main
+# Comment: Returns to main branch of repository
+#          origin = your GitHub repository
+#          homework/Cannonball = the branch to push to
+#          No -u needed since we already set upstream in Step 6
+
+# ============================================================================
+# Step 21: Switch back to homework branch
+# ============================================================================
+git checkout homework/Cannonball
+# Comment: Returns to the homework branch
+#          Automatically switches you to the homework branch
+#          You're now working in an isolated branch (won't affect main)
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
